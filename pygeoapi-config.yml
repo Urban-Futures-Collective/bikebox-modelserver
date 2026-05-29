@@ -305,3 +305,33 @@ resources:
         type: process
         processor:
             name: HelloWorld
+    growbike:
+        type: process
+        processor:
+            name: growbike
+        inputs:
+          cityname:
+            title: City Name
+            description: Name of city to run analysis on
+            schema:
+              type: string
+
+          proj_crs:
+            title: Proj crs
+            description: CRS to be used for projection
+            schema:
+              type: string
+
+          ranking:
+            title: Ranking
+            description: measure to be used for ranking edges
+            schema:
+              type: string
+              default: betweenness_centrality
+
+        outputs:
+          result:
+            title: Growbike result
+            schema:
+              type: object
+              format: geojson-feature-collection
