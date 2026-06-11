@@ -1,0 +1,14 @@
+openapi: 3.0.2
+
+info:
+  title: pygeoapi API
+  version: 0.0.1
+  description: Geospatial API powered by pygeoapi
+
+servers:
+  - url: http://localhost:5000
+
+paths: {}
+
+components:
+  schemas: {}
