@@ -62,25 +62,25 @@ ARG TZ="Etc/UTC"
 ARG LANG="en_US.UTF-8"
 ARG ADD_DEB_PACKAGES="\
     libsqlite3-mod-spatialite \
-    python3-dask \
     python3-elasticsearch \
-    python3-fiona \
-    python3-gdal \
     python3-jsonpatch \
-    python3-netcdf4 \
-    python3-pandas \
     python3-psycopg2 \
     python3-pydantic \
     python3-pymongo \
     python3-pyproj \
-    python3-rasterio \
-    python3-scipy \
-    python3-shapely \
     python3-tinydb \
-    python3-xarray \
     python3-zarr \
     python3-mapscript \
     python3-pytest \
+    python3-gdal \
+    gdal-bin \
+    python3-shapely \
+    python3-fiona \
+    libgdal-dev \
+    build-essential \
+    gcc \
+    g++ \
+    python3-dev \
     python3-pyld"
 
 # ENV settings
@@ -109,6 +109,7 @@ WORKDIR /pygeoapi
 # Install operating system dependencies
 RUN apt-get update -y \
     && apt-get install -y ${DEB_BUILD_DEPS} \
+    && apt-get install -y libgl1 libglib2.0-0 \
     && add-apt-repository ppa:ubuntugis/ubuntugis-unstable \
     && apt-get --no-install-recommends install -y ${DEB_PACKAGES} \
     && localedef -i en_US -c -f UTF-8 -A /usr/share/locale/locale.alias en_US.UTF-8 \
@@ -130,15 +131,19 @@ RUN apt-get update -y \
 ADD . /pygeoapi
 
 # Install remaining pygeoapi deps and pygeoapi itself
-RUN python3 -m venv --system-site-packages /venv \
+RUN python3 -m venv  /venv \
     && /venv/bin/python3 -m pip install --no-cache-dir -r requirements-docker.txt \
     && /venv/bin/python3 -m pip install --no-cache-dir -r requirements-admin.txt \
     && /venv/bin/python3 -m pip install --no-cache-dir "gunicorn<24" \
-    && /venv/bin/python3 -m pip install --no-cache-dir -e .
+    && /venv/bin/python3 -m pip install --no-cache-dir "gevent>=22" \
+    && /venv/bin/python3 -m pip install --no-cache-dir -e . \
+    && /venv/bin/python3 -m pip install --no-cache-dir \
+        growbikenet
+
 
 # Set default config and entrypoint for Docker Image
 # and compile language files
-RUN cp /pygeoapi/docker/default.config.yml /pygeoapi/local.config.yml \
+RUN cp /pygeoapi/docker/bikebox-config.yml /pygeoapi/local.config.yml \
     && cp /pygeoapi/docker/entrypoint.sh /entrypoint.sh \
     && cd /pygeoapi \
     && for i in locale/*; do if [ "$i" != "locale/README.md" ]; then echo $i && pybabel compile -d locale -l `basename $i`; fi; done \
