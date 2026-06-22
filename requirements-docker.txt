@@ -3,6 +3,7 @@ geoalchemy2
 pygeofilter[backend-sqlalchemy]
 pygeoif
 pygeometa
+scipy
 sodapy
 s3fs<=2023.6.0
 Flask>=2.2.0
