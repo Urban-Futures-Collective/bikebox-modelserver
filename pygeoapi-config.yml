@@ -166,6 +166,7 @@ resources:
         outputs:
           result:
             title: Growbike result
+            description: set of edges that make up newly created bicycle network. Ordering is dependent on the chosen ranking method. Each edge has attributes for length, cumulative length of the network at the step when edge gets added, and the value that is associated with the ranking method.
             schema:
               type: object
               format: geojson-feature-collection
