@@ -80,7 +80,7 @@ metadata:
                 - api
         keywords_type: theme
         terms_of_service: https://creativecommons.org/licenses/by/4.0/
-        url: https://example.org
+        url: http://localhost:5000
     license:
         name: CC-BY 4.0 license
         url: https://creativecommons.org/licenses/by/4.0/
