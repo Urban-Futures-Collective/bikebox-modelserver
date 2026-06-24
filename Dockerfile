@@ -143,7 +143,7 @@ RUN python3 -m venv  /venv \
 
 # Set default config and entrypoint for Docker Image
 # and compile language files
-RUN cp /pygeoapi/docker/bikebox-config.yml /pygeoapi/local.config.yml \
+RUN cp /pygeoapi/docker/bikebox-config-prod.yml /pygeoapi/local.config.yml \
     && cp /pygeoapi/docker/entrypoint.sh /entrypoint.sh \
     && cd /pygeoapi \
     && for i in locale/*; do if [ "$i" != "locale/README.md" ]; then echo $i && pybabel compile -d locale -l `basename $i`; fi; done \

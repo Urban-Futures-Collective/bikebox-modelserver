@@ -3,13 +3,13 @@ services:
     build:
       context: .
       dockerfile: Dockerfile
-    image: pygeoapi-growbike:local
+    image: pygeoapi-growbike:prod
     container_name: pygeoapi-growbike
     ports:
       - "5000:80"
     volumes:
-      - ./pygeoapi-config.yml:/pygeoapi/local.config.yml:ro
+      - ./docker/bikebox-config-prod.yml:/pygeoapi/local.config.yml:ro
     environment:
       PYGEOAPI_CONFIG: /pygeoapi/local.config.yml
-      PYGEOAPI_SERVER_URL: http://localhost:5000
+      PYGEOAPI_SERVER_URL: https://bikebox.urbanfuturescollective.org
     restart: unless-stopped
