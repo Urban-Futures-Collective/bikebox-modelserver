@@ -1,4 +1,40 @@
-# pygeoapi
+# BikeBox readme
+
+This is the BikeBox implementation of [pygeoapi](https://pygeoapi.io), maintained by the [Urban Futures Collective](https://urbanfuturescollective.org). 
+
+## Quickstart
+
+System requirements:
+* Docker
+* ...
+
+To run the `growbike` process,
+
+1. clone this repository:
+
+`git clone https://github.com/Urban-Futures-Collective/pygeoapi_growbike.git`
+
+2. navigate to the project directory:
+
+`cd pygeoapi_growbike`
+
+3. build the Docker image:
+
+`docker build -t pygeoapi_growbike .`
+
+4. start up the Docker container:
+
+`docker run -p 5000:80 pygeoapi_growbike`
+
+5. to test the process, send a POST request (see `testgrowbike.sh` for details): 
+
+`bash testgrowbike.sh`
+
+6. Inspect results *under construction; currently see jobs/results folder on localhost, search by job_id as shown in terminal*
+
+***
+
+# pygeoapi readme
 
 [![DOI](https://zenodo.org/badge/121585259.svg)](https://zenodo.org/badge/latestdoi/121585259)
 [![Build](https://github.com/geopython/pygeoapi/actions/workflows/main.yml/badge.svg)](https://github.com/geopython/pygeoapi/actions/workflows/main.yml)
