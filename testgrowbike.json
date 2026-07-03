@@ -1,0 +1,5 @@
+{ "inputs": {
+        "cityname": "Oelde",
+        "ranking": "betweenness_centrality"
+    }
+}
