@@ -66,14 +66,6 @@ PROCESS_METADATA = {
                 'default': None
             },
         },
-        'export_data': {
-            'title': 'Export data',
-            'description': 'always set to False since data would be stored on host machine',
-            'schema': {
-                'type': 'boolean',
-                'default': False
-            },
-        },
     },
     'outputs': {
         'result': {
@@ -109,7 +101,7 @@ class GrowBikeNet(BaseProcessor):
         seed_point_grid_spacing = data.get('seed_point_grid_spacing', 'auto')
         seed_point_delta = data.get('seed_point_delta', 'auto')
         existing_network_spacing = data.get('existing_network_spacing', None)
-        export_data = data.get('export_data', False)
+        export_data = False
 
         try:
             gdf = gbn.growbikenet(city_name=city_name, crs_projected=crs_projected, ranking=ranking, seed_point_type=seed_point_type, seed_point_grid_spacing=seed_point_grid_spacing,seed_point_delta=seed_point_delta, existing_network_spacing=existing_network_spacing, export_data=export_data)
