@@ -156,13 +156,6 @@ resources:
               type: integer
               default: None
 
-          export_data:
-            title: Export data
-            description: always set to False since data would be stored on host machine
-            schema:
-              type: boolean
-              default: False
-
         outputs:
           result:
             title: Growbike result
