@@ -5,8 +5,8 @@ services:
       dockerfile: Dockerfile
     image: pygeoapi-growbike:prod
     container_name: pygeoapi-growbike
-    ports:
-      - "9000:80"
+    expose:
+      - "80"
     volumes:
       - ./docker/bikebox-config-prod.yml:/pygeoapi/local.config.yml:ro
     environment:
