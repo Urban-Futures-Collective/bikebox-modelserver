@@ -152,3 +152,42 @@ resources:
             schema:
               type: object
               format: geojson-feature-collection
+
+    fixbike:
+      type: process
+      processor:
+        name: fixbike
+      inputs:
+        cityname:
+          title: City Name
+          description: Name of the city that the analysis should be performed on. This is the query string used to fetch the data from nominatim.
+          schema:
+            type: string
+
+        proj_crs:
+          title: CRS projected
+          description: EPSG code of the coordinate reference system that is used to project osm data. Default is '3857' (WGS 84 / Pseudo-Mercator). If this web mercator projection is not needed, then for Europe '3035' (LAEA) and globally '54035' (Equal Earth) is better.
+          schema:
+            type: string
+
+        radius:
+          title: Radius
+          description: Cut-off length for computation of local betweenness centrality, in meters..
+          schema:
+            type: integer
+            default: 2500
+
+        maxgap:
+          title: Maxgap
+          description: Maximum distance between node pairs to be considered as a potential gap.
+          schema:
+            type: integer
+            default: 1000
+
+      outputs:
+        result:
+          title: Fixbike result
+          description: Ordered geodataframe with the 100 most important gaps to fill. Each gap has a source, target, the benefit metric, the path between them and an associated geometry.
+          schema:
+            type: object
+            format: geojson-feature-collection
