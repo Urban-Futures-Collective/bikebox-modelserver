@@ -90,6 +90,7 @@ metadata:
     contact:
         email: info@urbanfuturescollective.org
         url: https://urbanfuturescollective.org/
+        name: Urban Futures Collective
 
 resources:
     growbike:
@@ -151,3 +152,50 @@ resources:
             schema:
               type: object
               format: geojson-feature-collection
+
+    superblockify:
+      type: process
+      processor:
+        name: superblockify
+      inputs:
+        cityname:
+          title: City Name
+          description: Name of the city that the analysis should be performed on. This is the query string used to fetch the data from nominatim.
+          schema:
+            type: string
+
+        unit:
+          title: Unit
+          description: Unit used for partitioning. Default is time, other options are distance or other edge attributes.
+          schema:
+            type: string
+            default: time
+
+        calculate_metrics:
+          title: Calculate Metrics
+          description: Whether or not metrics will be calculated. Default is True.
+          schema:
+            type: boolean
+            default: True
+
+        replace_max_speeds:
+          title: Replace Max Speeds
+          description: If set to True, the standard OSM speed limits will be overwritten. Default is False.
+          schema:
+            type: boolean
+            default: False
+
+        approach:
+          title: Approach
+          description: Which approach to use for the partitioning. Default is Residential, alternatively Betweenness can be used.
+          schema:
+            type: string
+            default: Residential
+
+      outputs:
+        result:
+          title: Superblockify result
+          description: Geopackage with nodes, edges, ltns and graph layer. Returns the calculated metrics and figures for the chosen city.
+          schema:
+            type: string
+            format: application/geopackage+sqlite3
