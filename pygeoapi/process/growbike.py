@@ -63,7 +63,7 @@ PROCESS_METADATA = {
             'description': 'Spacing between seed points, in meters, only on the existing bicycle network. If not set to a positive integer, the existing network is ignored. existing_network_spacing is recommended to be smaller than seed_point_grid_spacing, ideally around 25%, to ensure that the existing bicycle network is built first.',
             'schema': {
                 'type': 'integer',
-                'default': None
+                'default': 'auto'
             },
         },
     },
