@@ -81,6 +81,7 @@ PLUGINS = {
         'Echo': 'pygeoapi.process.echo.EchoProcessor',
         'growbike': 'pygeoapi.process.growbike.GrowBikeNet',
         'superblockify': 'pygeoapi.process.superblockify.SuperBlockify'
+        'fixbike': 'pygeoapi.process.fixbike.FixBikeNet'
     },
     'process_manager': {
         'Dummy': 'pygeoapi.process.manager.dummy.DummyManager',
