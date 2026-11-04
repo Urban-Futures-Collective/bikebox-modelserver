@@ -1,0 +1,6 @@
+{
+    "inputs": {
+      "city_query": "Tirana",
+      "link_strategy": "largest_to_closest"
+    }
+}
