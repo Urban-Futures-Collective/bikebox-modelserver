@@ -1,4 +1,6 @@
 { "inputs": {
-        "cityname": "Scheveningen, NL"
+        "cityname": "Oelde",
+        "unit": "time",
+        "approach": "Residential"
     }
 }
