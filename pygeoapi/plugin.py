@@ -80,7 +80,8 @@ PLUGINS = {
         'ShapelyFunctions': 'pygeoapi.process.shapely_functions.ShapelyFunctionsProcessor',  # noqa: E501
         'Echo': 'pygeoapi.process.echo.EchoProcessor',
         'growbike': 'pygeoapi.process.growbike.GrowBikeNet',
-        'fixbike': 'pygeoapi.process.fixbike.FixBikeNet'
+        'fixbike': 'pygeoapi.process.fixbike.FixBikeNet',
+        'helloglobe': 'pygeoapi.process.helloglobe.helloglobeProcessor',
     },
     'process_manager': {
         'Dummy': 'pygeoapi.process.manager.dummy.DummyManager',
