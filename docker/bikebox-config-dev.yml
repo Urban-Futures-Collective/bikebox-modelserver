@@ -190,6 +190,31 @@ resources:
             type: object
             format: geojson-feature-collection
 
+    linkbike:
+      type: process
+      processor:
+        name: linkbike
+      inputs:
+        city_query:
+          title: City Query
+          description: Search string for the city that the analysis should be performed on. This is the query used to fetch the data from nominatim.
+          schema:
+            type: string
+
+        link_strategy:
+          title: Link strategy
+          description: Strategy for linking components. Default is "largest_to_closest", other options are "largest_to_second" and "closest_components".
+          schema:
+            type: string
+            default: largest_to_closest
+
+      outputs:
+        result:
+          title: Linkbike result
+          description: The proposed links, ordered after strategy chosen.
+          schema:
+            type: object
+            format: geojson-feature-collection
     helloglobe:
         type: process
         processor:
