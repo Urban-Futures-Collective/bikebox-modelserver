@@ -1,4 +1,5 @@
 { "inputs": {
-        "cityname": "Copenhagen Municipality"
+        "cityname": "Copenhagen Municipality",
+        "proj_crs": "3857"
     }
 }
