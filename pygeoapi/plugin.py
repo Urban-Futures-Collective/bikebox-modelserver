@@ -81,6 +81,7 @@ PLUGINS = {
         'Echo': 'pygeoapi.process.echo.EchoProcessor',
         'growbike': 'pygeoapi.process.growbike.GrowBikeNet',
         'fixbike': 'pygeoapi.process.fixbike.FixBikeNet',
+        'linkbike': 'pygeoapi.process.linkbike.LinkBikeNet',
         'helloglobe': 'pygeoapi.process.helloglobe.helloglobeProcessor',
     },
     'process_manager': {
