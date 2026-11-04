@@ -63,7 +63,7 @@ PROCESS_METADATA = {
             'description': 'Spacing between seed points, in meters, only on the existing bicycle network. If not set to a positive integer, the existing network is ignored. existing_network_spacing is recommended to be smaller than seed_point_grid_spacing, ideally around 25%, to ensure that the existing bicycle network is built first.',
             'schema': {
                 'type': 'integer',
-                'default': 'auto'
+                'default': 0
             },
         },
     },
@@ -100,7 +100,7 @@ class GrowBikeNet(BaseProcessor):
         seed_point_type = data.get('seed_point_type', 'auto')
         seed_point_grid_spacing = data.get('seed_point_grid_spacing', 'auto')
         seed_point_delta = data.get('seed_point_delta', 'auto')
-        existing_network_spacing = data.get('existing_network_spacing', None)
+        existing_network_spacing = data.get('existing_network_spacing', 0)
         export_data = False
 
         try:
