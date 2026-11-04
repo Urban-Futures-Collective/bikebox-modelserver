@@ -217,3 +217,19 @@ resources:
           schema:
             type: object
             format: geojson-feature-collection
+    helloglobe:
+        type: process
+        processor:
+            name: helloglobe
+        inputs:
+          color:
+            title: Color
+            description: Color of the globe you want to get echoed back.
+            schema:
+              type: string
+        outputs:
+          result:
+            title: Colored globe
+            description: The globe, now colored.
+            schema:
+              type: string
