@@ -83,6 +83,7 @@ PLUGINS = {
         'fixbike': 'pygeoapi.process.fixbike.FixBikeNet',
         'linkbike': 'pygeoapi.process.linkbike.LinkBikeNet',
         'helloglobe': 'pygeoapi.process.helloglobe.helloglobeProcessor',
+        'superblockify': 'pygeoapi.process.superblockify.SuperBlockify',
     },
     'process_manager': {
         'Dummy': 'pygeoapi.process.manager.dummy.DummyManager',
