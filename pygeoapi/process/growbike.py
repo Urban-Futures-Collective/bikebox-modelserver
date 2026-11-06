@@ -19,7 +19,7 @@ PROCESS_METADATA = {
             },
         },
         'crs_projected': {
-            'title': 'CRS projected',
+            'title': 'Projected CRS (coordinate reference system) for the city as EPSG code (default: 3857)',
             'description': 'EPSG code of the coordinate reference system that is used to project osm data. Default is 3857 (WGS 84 / Pseudo-Mercator). If this web mercator projection is not needed, then for Europe 3035 (LAEA) and globally 54035 (Equal Earth) is better.',
             'schema': {
                 'type': 'string',
@@ -27,7 +27,7 @@ PROCESS_METADATA = {
             },
         },
         'ranking': {
-            'title': 'Ranking',
+            'title': 'Ranking method',
             'description': 'Method used to rank edges. Must be betweenness_centrality (default), closeness_centrality, or random.',
             'schema': {
                 'type': 'string',
@@ -43,7 +43,7 @@ PROCESS_METADATA = {
             },
         },
         'seed_point_grid_spacing': {
-            'title': 'Seed point grid spacing',
+            'title': 'Seed point grid spacing, in meters',
             'description': 'If seed_point_type is set to grid_square or grid_triangle, this is the spacing between seed points, in meters. Auto-value for seed_point_type grid_square with seed_point_linking triangulate_delaunay is 1707. Auto-value for seed_point_type grid_square with seed_point_linking quadrangulate is 1000. Auto-value for seed_point_type grid_triangle is 1154',
             'schema': {
                 'type': 'integer',
