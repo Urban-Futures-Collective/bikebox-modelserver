@@ -20,7 +20,7 @@ PROCESS_METADATA = {
         },
         'crs_projected': {
             'title': 'Projected CRS (coordinate reference system) for the city as EPSG code',
-            'description': 'EPSG code of the coordinate reference system that is used to project osm data. Default is 3857 (WGS 84 / Pseudo-Mercator). If this web mercator projection is not needed, then for Europe 3035 (LAEA) and globally 54035 (Equal Earth) is better.',
+            'description': 'EPSG code of the coordinate reference system that is used to project OpenStreetMap data. Default is 3857 (WGS 84 / Pseudo-Mercator).',
             'schema': {
                 'type': 'string',
                 'default': '3857'
