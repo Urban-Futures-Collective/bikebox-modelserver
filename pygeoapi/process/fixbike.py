@@ -12,31 +12,31 @@ PROCESS_METADATA = {
     'keywords': ['fixbike'],
     'inputs': {
         'cityname': {
-            'title': 'City Name',
-            'description': 'Name of the city that the analysis should be performed on. This is the query string used to fetch the data from nominatim.',
+            'title': 'City name',
+            'description': 'Name of the city that the model should be run on. This is the query string used to fetch the underlying OpenStreetMap data through Nominatim.',
             'schema': {
                 'type': 'string'
             },
         },
         'proj_crs': {
-            'title': 'CRS projected',
-            'description': 'EPSG code of the coordinate reference system that is used to project osm data. Default is 3857 (WGS 84 / Pseudo-Mercator). If this web mercator projection is not needed, then for Europe 3035 (LAEA) and globally 54035 (Equal Earth) is better.',
+            'title': 'Projected CRS (coordinate reference system) for the city as EPSG code',
+            'description': 'EPSG code of the coordinate reference system that is used to project OpenStreetMap data. Default is 3857 (WGS 84 / Pseudo-Mercator).',
             'schema': {
                 'type': 'string',
                 'default': '3857'
             },
         },
         'radius': {
-            'title': 'Radius',
-            'description': 'cut-off length for computation of local betweenness centrality, in meters.',
+            'title': 'Maximum path length for betweenness centrality computation, in meters',
+            'description': 'Betweenness centrality quantifies the percentage of network paths that pass through the gap. Only paths up to a given length (maximum path length) are considered. The default value is 2000m; the computation time scales exponentially with maximum path length.',
             'schema': {
                 'type': 'integer',
-                'default': 2500
+                'default': 2000
             },
         },
         'maxgap': {
-            'title': 'Maxgap',
-            'description': 'Maximum distance between node pairs to be considered as a potential gap.',
+            'title': 'Maximum gap length, in meters',
+            'description': 'Gaps up to the maximum gap length (default: 1000m) will be considered as gaps by the model, while longer gaps will be ignored.',
             'schema': {
                 'type': 'integer',
                 'default': 1000
