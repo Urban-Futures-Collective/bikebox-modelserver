@@ -12,15 +12,15 @@ PROCESS_METADATA = {
     'keywords': ['linkbike'],
     'inputs': {
         'city_query': {
-            'title': 'City Query',
-            'description': 'Search string for the city that the analysis should be performed on. This is the query used to fetch the data from nominatim.',
+            'title': 'City name',
+            'description': 'Name of the city that the model should be run on. This is the query string used to fetch the underlying OpenStreetMap data through Nominatim.',
             'schema': {
                 'type': 'string'
             },
         },
         'link_strategy': {
-            'title': 'Link Strategy',
-            'description': 'Strategy for linking components. Default is "largest_to_closest", other options are "largest_to_second" and "closest_components".',
+            'title': 'Linking strategy',
+            'description': 'Strategy for linking disconnected components. Must be one of the following strings: "largest_to_closest", "largest_to_second", or "closest_components". "largest_to_closest" will iteratively connect, at each step, the current largest network component to the closest disconnected one. "largest_to_second" will iteratively connect, at each step, the largest network component to the second-largest one. "closest_components" will iteratively connect, at each step, the two closest components to each other.' ,
             'schema': {
                 'type': 'string',
                 'default': 'largest_to_closest',
