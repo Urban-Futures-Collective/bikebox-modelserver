@@ -12,14 +12,14 @@ PROCESS_METADATA = {
     'keywords': ['growbike'],
     'inputs': {
         'cityname': {
-            'title': 'City Name',
-            'description': 'Name of the city that the analysis should be performed on. This is the query string used to fetch the data from nominatim.',
+            'title': 'City name',
+            'description': 'Name of the city that the model should be run on. This is the query string used to fetch the underlying OpenStreetMap data through Nominatim.',
             'schema': {
                 'type': 'string'
             },
         },
         'crs_projected': {
-            'title': 'Projected CRS (coordinate reference system) for the city as EPSG code (default: 3857)',
+            'title': 'Projected CRS (coordinate reference system) for the city as EPSG code',
             'description': 'EPSG code of the coordinate reference system that is used to project osm data. Default is 3857 (WGS 84 / Pseudo-Mercator). If this web mercator projection is not needed, then for Europe 3035 (LAEA) and globally 54035 (Equal Earth) is better.',
             'schema': {
                 'type': 'string',
@@ -27,8 +27,8 @@ PROCESS_METADATA = {
             },
         },
         'ranking': {
-            'title': 'Ranking method',
-            'description': 'Method used to rank edges. Must be betweenness_centrality (default), closeness_centrality, or random.',
+            'title': 'Ordering method',
+            'description': 'Method used to order edges in the final network. Must be one of the following strings: "betweenness_centrality" (default), "closeness_centrality", or "random".',
             'schema': {
                 'type': 'string',
                 'default': 'betweenness_centrality'
@@ -36,34 +36,34 @@ PROCESS_METADATA = {
         },
         'seed_point_type': {
             'title': 'Seed point type',
-            'description': 'If set to auto, selects grid_square or grid_triangle automatically depending on the street networks orientation entropy. If set to grid_square, creates a square grid. If set to rail, uses railway stations and halts. If set to school, uses kindergartens, schools, colleges, and universities. If set to park, uses parks, gardens, nature reserves, and public bathing places.',
+            'description': 'Method used to generate seed points. Must be one of the following strings: "grid_triangle", "grid_square", "auto" (default), or "rail". "grid_triangle" builds a triangular grid; "grid_square" builds a rectangular grid; "auto" builds a triangular or rectangular grid depending on the underlying street network configuration; and "rail" selects train stations as greed points.',
             'schema': {
                 'type': 'string',
                 'default': 'auto'
             },
         },
         'seed_point_grid_spacing': {
-            'title': 'Seed point grid spacing, in meters',
-            'description': 'If seed_point_type is set to grid_square or grid_triangle, this is the spacing between seed points, in meters. Auto-value for seed_point_type grid_square with seed_point_linking triangulate_delaunay is 1707. Auto-value for seed_point_type grid_square with seed_point_linking quadrangulate is 1000. Auto-value for seed_point_type grid_triangle is 1154',
+            'title': 'Seed point spacing on final network, in meters',
+            'description': 'The spacing between seed points of the network, in meters. If left empty, a default value in the range of 1000-1700m is selected, depending on the seed point type. If the seed point type is "rail", this parameter is ignored.',
             'schema': {
                 'type': 'integer',
                 'default': 'auto'
             },
         },
         'seed_point_delta': {
-            'title': 'Seed point delta',
-            'description': 'Maximum distance between raw seed points and osm nodes for snapping, in meters. Auto-value is round(seed_point_grid_spacing/4).',
+            'title': 'Maximum snapping distance for seed points, in meters',
+            'description': 'Seed points are snapped to the nearest street network edge, unless they are too far away from the street network (for example, if a seed point is located in the middle of a nature reserve or industrial area). This parameter controls the maximum snapping distance from the street network, above which seed points are ignored. If left empty, set to a default value of 25% of the seed point spacing.',
             'schema': {
                 'type': 'integer',
                 'default': 'auto'
             },
         },
         'existing_network_spacing': {
-            'title': 'Existing network spacing',
-            'description': 'Spacing between seed points, in meters, only on the existing bicycle network. If not set to a positive integer, the existing network is ignored. existing_network_spacing is recommended to be smaller than seed_point_grid_spacing, ideally around 25%, to ensure that the existing bicycle network is built first.',
+            'title': 'Seed point spacing on existing network, in meters',
+            'description': 'The spacing between seed points on the existing bicycle network of the city (if any), in meters. Default value is 250m. The value of this parameter should be smaller than the seed point spacing on the final network, ideally around 25% thereof, to ensure that the model builds the existing bicycle network first.',
             'schema': {
                 'type': 'integer',
-                'default': 500
+                'default': 250
             },
         },
     },
